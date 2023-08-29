@@ -17,7 +17,7 @@ var questions = [
   },
 ];
 
-console.log(questions[1]);
+var currentQuestionIndex = 0;
 
 // i want to create a variable for question1
 var question1 = document.querySelector("#question1");
@@ -41,5 +41,16 @@ hideQuiz2();
 
 start.addEventListener("click", function () {
   start.style.visibility = "hidden";
-  quiz.style.visibility = "visible";
+  question1.style.visibility = "visible";
+});
+
+// for loop?
+question1.addEventListener("click", function () {
+  question1.style.visibility = "hidden";
+  question2.style.visibility = "visible";
+});
+
+question2.addEventListener("click", function () {
+  question2.style.visibility = "hidden";
+  question3.style.visibility = "visible";
 });
