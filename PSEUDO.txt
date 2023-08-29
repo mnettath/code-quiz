@@ -1,18 +1,52 @@
-HTML 
-- VIEW HIGH SCORES AT UPPER LEFT CORNER, TIME AT UPPER RIGHT CORNER 
-- CODING QUIZ CHALLENGE: TRY TO ANSWER THE FOLLOWING CODE-RELATED QUESTIONS WITHIN THE TIME LIMIT. KEEP IN MIND THAT INCORRECT ANSWERS WILL PENALIZE YOUR SCORE/TIME BY TEN SECONDS!
+Mod 4 Game plan:
 
-- START QUIZ BUTTON 
-- TIME ON UPPER RIGHT CORNER BEGINS AT 75 SECONDS 
+HTML
+- link to our high scores page: rendering the high scores stored in localStorage, use anchor tag
 
-- 5 QUESTIONS 
-- 4 OPTIONS 
-- AFTER CLICKING ON AN ANSWER, DISPLAYS BELOW IF IT IS CORRECT OR INCORRECT 
+- create 3 sections in your index.html file - DONE
 
-- ALL DONE! 
-- SHOWS FINAL SCORE 
-- PROMPTS USER TO ENTER INITIALS IN INPUT BOX WITH SUBMIT BUTTON
+1: start section
+- start button: attach event listener
+    timer starts (low priority)
+    hide start section
+    show quiz section 
+    display a question 
+    
+2: quiz section (objects with arrays in them)
+    recommended data structure: 
+    var questions = 
+    [
+        {
+            title: first question, 
+            choices: ['red', 'green', 'blue', 'yellow']
+            answer: [0] or 'red'
+        }
+    ]
+build a displayQuestion function (purpose: renders the question)
+attaching click events to each option in html 
+when clicked check is answer is correct or incorrect 
+if correct, display next question
+if wrong, timer/score decrements by 10 seconds 
+timer/score <= 0 
+    if 0, game ends, if < 0 
+if last question
+    display results
+    else next question 
+3: results 
+    form OR an input with a button 
+        when button is clicked 
+            grab score and itials and store them in local storage 
+            recommended data structure: 
+                array of objects 
+                [
+                    {
+                        initials: jmm,
+                        score: 50
+                    },
+                ]
+            append to local storage, do not want to override
+- show start section and hide other 2 sections 
 
-- SHOWS HIGH SCORES SCREEN
-- USERS SCORE SHOULD BE DISPLAYED 
-- 2 BUTTONS: GO BACK AND CLEAR HIGH SCORES 
+highscores.html 
+    display all scores in desc order from local storage 
+    highscore.js (optional)
