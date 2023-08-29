@@ -1,3 +1,7 @@
 html {
   background-color: burlywood;
 }
+
+.hide {
+  display: none;
+}
