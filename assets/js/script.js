@@ -3,13 +3,15 @@ var startButton = document.getElementById("start-btn");
 var timerDisplay = document.getElementById("timerDisplay");
 var questionElement = document.getElementById("question");
 var choicesElement = document.getElementById("choices");
-var submitButton = document.getElementById("submit");
 var startSection = document.getElementById("start");
 var quizSection = document.getElementById("quiz");
 var resultSection = document.getElementById("result");
+var submitButton = document.getElementById("submit");
 var initials = document.getElementById("initials");
 //define variables and objects for questions
 //array of objects
+// i want to create a form using DOM and append it to the result div
+
 var questions = [
   {
     question: "question 1",
@@ -68,6 +70,7 @@ function displayMessage() {
     }
   });
 }
+
 //QUIZ SECTION
 //create a function to display the current question and choices
 function displayQuestion() {
@@ -97,12 +100,31 @@ function answerSel(event) {
     gameOver();
   }
 }
+
 function gameOver() {
   quizSection.classList.add("hide");
   resultSection.classList.remove("hide");
   clearInterval(timeInterval);
+
+  var finalScore = document.createElement("p");
+  finalScore.textContent = "Your final score is " + timeScore.toString(); // shows time that has elapsed instead of time remaining
+  resultSection.append(finalScore);
 }
 
+var resultTitle = document.createElement("h2");
+resultTitle.textContent = "Results";
+resultSection.append(resultTitle);
+
+var form = document.createElement("form");
+resultSection.append(form);
+
+var initialsInput = document.createElement("label");
+initialsInput.textContent = "Enter initials:";
+form.append(initialsInput);
+
+var initialsInput = document.createElement("input");
+initialsInput.setAttribute("type", "text");
+form.append(initialsInput);
 //store score information in results page and sort them in descending order
 //add event listener for start button
 startButton.addEventListener("click", startQuiz);
