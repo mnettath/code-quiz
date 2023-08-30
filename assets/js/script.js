@@ -107,7 +107,7 @@ function gameOver() {
   clearInterval(timeInterval);
 
   var finalScore = document.createElement("p");
-  finalScore.textContent = "Your final score is " + timeScore.toString(); // shows time that has elapsed instead of time remaining
+  finalScore.textContent = "Your final score is " + timeScore;
   resultSection.append(finalScore);
 }
 
@@ -141,14 +141,14 @@ submitButton.addEventListener("click", function (event) {
 
   var inputData = {
     initialsInput: initialsInput.value,
-    timeScore: timeScore.number,
+    timeScore: timeScore.valueOf(),
   };
 
   localStorage.setItem("inputData", JSON.stringify(inputData));
   renderMessage();
 
   function renderMessage() {
-    var winnerInitials = JSON.parse(localStorage.getItem("inputData"));
-    console.log(winnerInitials);
+    var playerInfo = JSON.parse(localStorage.getItem("inputData"));
+    console.log(playerInfo);
   }
 });
