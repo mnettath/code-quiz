@@ -8,9 +8,6 @@ var quizSection = document.getElementById("quiz");
 var resultSection = document.getElementById("result");
 var submitButton = document.getElementById("submit");
 var initials = document.getElementById("initials");
-//define variables and objects for questions
-//array of objects
-// i want to create a form using DOM and append it to the result div
 
 var questions = [
   {
@@ -41,9 +38,11 @@ var questions = [
 ];
 var currentQuestionIndex = 0;
 var currentQ;
+
 // START SECTION
 var timeScore = 100;
 var timeInterval;
+
 //start timer/quiz
 function startQuiz() {
   startSection.classList.add("hide");
@@ -59,6 +58,7 @@ function startQuiz() {
   }, 1000);
   displayQuestion();
 }
+
 //create a function that displays time
 function displayMessage() {
   var timeUp = 0;
@@ -133,8 +133,10 @@ startButton.addEventListener("click", startQuiz);
 //initials:
 //key value --> high scores --> array of objects that look the same in their key structure
 //loop for rendering each high score
-localStorage.setItem;
+// localStorage.setItem;
 //separate pages for quiz and high scores
+
+// this function is listening for the submit button to be clicked and then it puts the user information into local storage
 
 submitButton.addEventListener("click", function (event) {
   event.preventDefault();
@@ -145,10 +147,4 @@ submitButton.addEventListener("click", function (event) {
   };
 
   localStorage.setItem("inputData", JSON.stringify(inputData));
-  renderMessage();
-
-  function renderMessage() {
-    var playerInfo = JSON.parse(localStorage.getItem("inputData"));
-    console.log(playerInfo);
-  }
 });
