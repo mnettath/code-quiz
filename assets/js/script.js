@@ -135,3 +135,20 @@ startButton.addEventListener("click", startQuiz);
 //loop for rendering each high score
 localStorage.setItem;
 //separate pages for quiz and high scores
+
+submitButton.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  var inputData = {
+    initialsInput: initialsInput.value,
+    timeScore: timeScore.number,
+  };
+
+  localStorage.setItem("inputData", JSON.stringify(inputData));
+  renderMessage();
+
+  function renderMessage() {
+    var winnerInitials = JSON.parse(localStorage.getItem("inputData"));
+    console.log(winnerInitials);
+  }
+});
