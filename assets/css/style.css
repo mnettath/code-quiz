@@ -1,5 +1,7 @@
 html {
-  background-color: burlywood;
+  background-color: rgb(196, 238, 255);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .hide {
@@ -8,5 +10,15 @@ html {
 
 li {
   cursor: grab;
-  list-style-type: none;
+  margin: 20px;
+}
+
+li:hover {
+  background-color: rgb(177, 243, 177);
+  width: 15vh;
+}
+
+#timerDisplay {
+  color: darkmagenta;
+  font-weight: bolder;
 }

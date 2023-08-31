@@ -9,67 +9,39 @@ var resultSection = document.getElementById("result");
 var submitButton = document.getElementById("submit");
 var initials = document.getElementById("initials");
 
-// var questions = [
-//   {
-//     question: "question 1",
-//     choices: ["words", "words", "words", "words"],
-//     correctAnswer: 0,
-//   },
-//   {
-//     question: "question 2",
-//     choices: ["words", "words", "words", "words"],
-//     correctAnswer: 3,
-//   },
-//   {
-//     question: "question 3",
-//     choices: ["words", "words", "words", "words"],
-//     correctAnswer: 1,
-//   },
-//   {
-//     question: "question 4",
-//     choices: ["words", "words", "words", "words"],
-//     correctAnswer: 4,
-//   },
-//   {
-//     question: "question 5",
-//     choices: ["words", "words", "words", "words"],
-//     correctAnswer: 2,
-//   },
-// ];
-
 var questions = [
   {
     question: "Commonly used data types DO NOT include:",
-    choices: ["strings", "booleans", "alerts", "numbers"],
-    correctAnswer: "alerts",
+    choices: ["Strings", "Booleans", "Alerts", "Numbers"],
+    correctAnswer: "Alerts",
   },
   {
     question:
       "The condition in an if / else statement is enclosed within ____.",
-    choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-    correctAnswer: "parentheses",
+    choices: ["Quotes", "Curly brackets", "Parentheses", "Square brackets"],
+    correctAnswer: "Parentheses",
   },
   {
     question: "Arrays in JavaScript can be used to store ____.",
     choices: [
-      "numbers and strings",
-      "other arrays",
-      "booleans",
-      "all of the above",
+      "Numbers and strings",
+      "Other arrays",
+      "Booleans",
+      "All of the above",
     ],
-    correctAnswer: "all of the above",
+    correctAnswer: "All of the above",
   },
   {
     question:
       "String values must be enclosed within ____ when being assigned to variables.",
-    choices: ["commas", "curly brackets", "quotes", "parentheses"],
-    correctAnswer: "quotes",
+    choices: ["Commas", "Curly brackets", "Quotes", "Parentheses"],
+    correctAnswer: "Quotes",
   },
   {
     question:
       "A very useful tool used during development and debugging for printing content to the debugger is:",
-    choices: ["JavaScript", "terminal / bash", "for loops", "console.log"],
-    correctAnswer: "console.log",
+    choices: ["JavaScript", "Terminal / bash", "For loops", "Console.log"],
+    correctAnswer: "Console.log",
   },
 ];
 
@@ -86,7 +58,7 @@ function startQuiz() {
   quizSection.classList.remove("hide");
   timeInterval = setInterval(function () {
     timeScore--;
-    timerDisplay.textContent = timeScore + " seconds remaining";
+    timerDisplay.textContent = timeScore + " SECONDS REMAINING";
 
     if (timeScore === 0) {
       timerDisplay.textContent = timeScore;
@@ -200,7 +172,7 @@ startButton.addEventListener("click", startQuiz);
 // this function is listening for the submit button to be clicked and then it puts the user information into local storage
 
 submitButton.addEventListener("click", function (event) {
-  event.preventDefault();
+  // event.preventDefault();
 
   if (initials !== "") {
     var scoresArr = JSON.parse(localStorage.getItem("inputData")) || [];
@@ -219,6 +191,12 @@ submitButton.addEventListener("click", function (event) {
     for (i = 0; i < scoresArr.length; i++) {
       var parsed = scoresArr[i];
       console.log(parsed);
+    }
+
+    for (i = 0; i < scoresArr.length; i++) {
+      var listItem = document.createElement("li");
+      listItem.textContent = `${parsed.initialsInput}: ${parsed.timeScore}`;
+      console.log(listItem);
     }
   }
   // stringified
