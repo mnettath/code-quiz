@@ -128,16 +128,24 @@ function answerSel(event) {
   // value of choice is stored in data attribute
   // i need to grab the value of the data attribute from the li
   // so i can check user choice vs the actual current questions index i .answers
-  var userChoice = event.target.id.value;
+
+  var chosenEl = event.target;
+  console.log(chosenEl);
+
+  var userChoice = chosenEl.dataset.choice;
   console.log(userChoice);
+  console.log(currentQ.correctAnswer);
+
   //check if answer is correct -- > check user choice with correct (if statement)
   if (userChoice != currentQ.correctAnswer) {
+    console.log("You are incorrect");
     timeScore -= 15;
     var incorrect = document.createElement("p");
     // incorrect.textContent = "Incorrect";
     quizSection.appendChild(incorrect);
     console.log(incorrect);
-  } else if (userChoice == currentQ.correctAnswer) {
+  } else if (userChoice === currentQ.correctAnswer) {
+    console.log("You are correct");
     var correct = document.createElement("p");
     // correct.textContent = "Correct";
     quizSection.appendChild(correct); // unable to append this to the question or choices elements, it wouldn't show up. Also keeps all the answers up
@@ -194,12 +202,20 @@ startButton.addEventListener("click", startQuiz);
 submitButton.addEventListener("click", function (event) {
   event.preventDefault();
 
-  var inputData = {
-    initialsInput: initialsInput.value,
-    timeScore: timeScore.valueOf(),
-  };
+  if (initials !== "") {
+    var scoresArr = JSON.parse(localStorage.getItem("inputData")) || [];
 
-  localStorage.setItem("inputData", JSON.stringify(inputData));
+    var inputData = {
+      initialsInput: initialsInput.value,
+      timeScore: timeScore.valueOf(),
+    };
+
+    scoresArr.push(inputData);
+
+    console.log(scoresArr);
+
+    localStorage.setItem("inputData", JSON.stringify(scoresArr));
+  }
 });
 
 // function renderInput() {

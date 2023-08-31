@@ -5,3 +5,8 @@ html {
 .hide {
   display: none;
 }
+
+li {
+  cursor: grab;
+  list-style-type: none;
+}
