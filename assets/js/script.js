@@ -92,6 +92,15 @@ function answerSel(event) {
   //check if answer is correct -- > check user choice with correct (if statement)
   if (userChoice != currentQ.correctAnswer) {
     timeScore -= 15;
+    var incorrect = document.createElement("p");
+    incorrect.textContent = "Incorrect";
+    quizSection.appendChild(incorrect);
+    console.log(incorrect);
+  } else if (userChoice == currentQ.correctAnswer) {
+    var correct = document.createElement("p");
+    correct.textContent = "Correct";
+    quizSection.appendChild(correct); // unable to append this to the question or choices elements, it wouldn't show up. Also keeps all the answers up
+    console.log(correct);
   }
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length && timeScore > 0) {
@@ -101,6 +110,7 @@ function answerSel(event) {
   }
 }
 
+// end the quiz and show the results section, display the final score
 function gameOver() {
   quizSection.classList.add("hide");
   resultSection.classList.remove("hide");
@@ -111,10 +121,12 @@ function gameOver() {
   resultSection.append(finalScore);
 }
 
+// create the results h2 element
 var resultTitle = document.createElement("h2");
 resultTitle.textContent = "Results";
 resultSection.append(resultTitle);
 
+// create the results form element
 var form = document.createElement("form");
 resultSection.append(form);
 
@@ -147,4 +159,10 @@ submitButton.addEventListener("click", function (event) {
   };
 
   localStorage.setItem("inputData", JSON.stringify(inputData));
+  renderInput();
 });
+
+function renderInput() {
+  var user = JSON.parse(localStorage.getItem(inputData));
+  console.log(user);
+}
