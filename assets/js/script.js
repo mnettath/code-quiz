@@ -215,10 +215,17 @@ submitButton.addEventListener("click", function (event) {
     console.log(scoresArr);
 
     localStorage.setItem("inputData", JSON.stringify(scoresArr));
-  }
-});
 
-// function renderInput() {
-//   var user = JSON.parse(localStorage.getItem(inputData));
-//   console.log(user);
-// }
+    for (i = 0; i < scoresArr.length; i++) {
+      var parsed = scoresArr[i];
+      console.log(parsed);
+    }
+  }
+  // stringified
+  // JSON.parse: turns back into an array of object
+  // var local.stage.getItem(inputData)
+  // console log this (should be an arary of objects)
+  //itarate through the array of objects
+  // for loop to dynamically update the text
+  // and append
+});
