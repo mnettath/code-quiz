@@ -1,9 +1,9 @@
 // i want to create a list
 // i want to be able to add to the list automatically
-var highScores = document.getElementById("high-scores");
+var highScores = document.getElementsByName("initialsInput");
 console.log(highScores);
 
-var scoresList = document.getElementById("scoreInfo");
+var scoresList = document.getElementsByName("timeScore");
 highScores.append(scoresList);
 console.log(scoresList);
 

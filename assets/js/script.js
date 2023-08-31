@@ -9,33 +9,70 @@ var resultSection = document.getElementById("result");
 var submitButton = document.getElementById("submit");
 var initials = document.getElementById("initials");
 
+// var questions = [
+//   {
+//     question: "question 1",
+//     choices: ["words", "words", "words", "words"],
+//     correctAnswer: 0,
+//   },
+//   {
+//     question: "question 2",
+//     choices: ["words", "words", "words", "words"],
+//     correctAnswer: 3,
+//   },
+//   {
+//     question: "question 3",
+//     choices: ["words", "words", "words", "words"],
+//     correctAnswer: 1,
+//   },
+//   {
+//     question: "question 4",
+//     choices: ["words", "words", "words", "words"],
+//     correctAnswer: 4,
+//   },
+//   {
+//     question: "question 5",
+//     choices: ["words", "words", "words", "words"],
+//     correctAnswer: 2,
+//   },
+// ];
+
 var questions = [
   {
-    question: "question 1",
-    choices: ["words", "words", "words", "words"],
-    correctAnswer: 0,
+    question: "Commonly used data types DO NOT include:",
+    choices: ["strings", "booleans", "alerts", "numbers"],
+    correctAnswer: "alerts",
   },
   {
-    question: "question 2",
-    choices: ["words", "words", "words", "words"],
-    correctAnswer: 3,
+    question:
+      "The condition in an if / else statement is enclosed within ____.",
+    choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+    correctAnswer: "parentheses",
   },
   {
-    question: "question 3",
-    choices: ["words", "words", "words", "words"],
-    correctAnswer: 1,
+    question: "Arrays in JavaScript can be used to store ____.",
+    choices: [
+      "numbers and strings",
+      "other arrays",
+      "booleans",
+      "all of the above",
+    ],
+    correctAnswer: "all of the above",
   },
   {
-    question: "question 4",
-    choices: ["words", "words", "words", "words"],
-    correctAnswer: 4,
+    question:
+      "String values must be enclosed within ____ when being assigned to variables.",
+    choices: ["commas", "curly brackets", "quotes", "parentheses"],
+    correctAnswer: "quotes",
   },
   {
-    question: "question 5",
-    choices: ["words", "words", "words", "words"],
-    correctAnswer: 2,
+    question:
+      "A very useful tool used during development and debugging for printing content to the debugger is:",
+    choices: ["JavaScript", "terminal / bash", "for loops", "console.log"],
+    correctAnswer: "console.log",
   },
 ];
+
 var currentQuestionIndex = 0;
 var currentQ;
 
@@ -80,25 +117,29 @@ function displayQuestion() {
   for (let i = 0; i < currentQ.choices.length; i++) {
     const choice = currentQ.choices[i];
     var li = document.createElement("li");
-    li.setAttribute("id", i);
+    li.setAttribute("class", "choice");
+    li.setAttribute("data-choice", choice);
     li.textContent = choice;
     li.addEventListener("click", answerSel);
     choicesElement.append(li);
   }
 }
 function answerSel(event) {
-  var userChoice = event.target.id;
+  // value of choice is stored in data attribute
+  // i need to grab the value of the data attribute from the li
+  // so i can check user choice vs the actual current questions index i .answers
+  var userChoice = event.target.id.value;
   console.log(userChoice);
   //check if answer is correct -- > check user choice with correct (if statement)
   if (userChoice != currentQ.correctAnswer) {
     timeScore -= 15;
     var incorrect = document.createElement("p");
-    incorrect.textContent = "Incorrect";
+    // incorrect.textContent = "Incorrect";
     quizSection.appendChild(incorrect);
     console.log(incorrect);
   } else if (userChoice == currentQ.correctAnswer) {
     var correct = document.createElement("p");
-    correct.textContent = "Correct";
+    // correct.textContent = "Correct";
     quizSection.appendChild(correct); // unable to append this to the question or choices elements, it wouldn't show up. Also keeps all the answers up
     console.log(correct);
   }
@@ -159,10 +200,9 @@ submitButton.addEventListener("click", function (event) {
   };
 
   localStorage.setItem("inputData", JSON.stringify(inputData));
-  renderInput();
 });
 
-function renderInput() {
-  var user = JSON.parse(localStorage.getItem(inputData));
-  console.log(user);
-}
+// function renderInput() {
+//   var user = JSON.parse(localStorage.getItem(inputData));
+//   console.log(user);
+// }
