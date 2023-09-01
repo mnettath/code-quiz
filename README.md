@@ -2,7 +2,7 @@
 
 ## Description
 
-I created this code quiz to help students learning JavaScript remember certain concepts. I wanted to include a time/score aspect in this quiz in order to add a competitive element. This project gave me a lot of practice and better understanding of JavaScript. I really became more comfortable using methods such as sort(), append(), setItem() and getItem(), to name a few. I also became more familiar with using DOM traversal and local storage. Finally, while working on this project, I realized the importance of breaking down complex problems into smaller ones.
+I created this code quiz to help students learning JavaScript remember certain concepts. I wanted to include a time/score aspect in this quiz in order to add a competitive element. This project gave me a lot of practice and a better understanding of JavaScript. I really became more comfortable using methods such as sort(), append(), setItem() and getItem(), to name a few. I also became more familiar with using DOM traversal and local storage. Finally, while working on this project, I realized the importance of breaking down complex problems into smaller ones.
 
 ## Installation
 
@@ -14,7 +14,7 @@ This quiz is multiple choice and has 5 questions total. To begin the quiz, click
 
 ![Code Quiz Screenshot](assets/images/CodeQuizScreenshot.png)
 
-Link to deployed app:
+Link to deployed app: https://mnettath.github.io/code-quiz/
 
 ## Credits
 
