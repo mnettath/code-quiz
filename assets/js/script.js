@@ -113,15 +113,11 @@ function answerSel(event) {
     console.log("You are incorrect");
     timeScore -= 15;
     var incorrect = document.createElement("p");
-    // incorrect.textContent = "Incorrect";
     quizSection.appendChild(incorrect);
-    console.log(incorrect);
   } else if (userChoice === currentQ.correctAnswer) {
     console.log("You are correct");
     var correct = document.createElement("p");
-    // correct.textContent = "Correct";
-    quizSection.appendChild(correct); // unable to append this to the question or choices elements, it wouldn't show up. Also keeps all the answers up
-    console.log(correct);
+    quizSection.appendChild(correct);
   }
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length && timeScore > 0) {
@@ -174,6 +170,11 @@ startButton.addEventListener("click", startQuiz);
 submitButton.addEventListener("click", function (event) {
   event.preventDefault();
 
+  if (!initialsInput.value) {
+    alert("Please enter your initials before pressing submit!");
+    return;
+  }
+
   if (initials !== "") {
     var scoresArr = JSON.parse(localStorage.getItem("inputData")) || [];
 
@@ -188,14 +189,27 @@ submitButton.addEventListener("click", function (event) {
 
     localStorage.setItem("inputData", JSON.stringify(scoresArr));
 
+    // sort the scoresArr in descending order based on timeScore
+    scoresArr.sort(function (a, b) {
+      return b.timeScore - a.timeScore;
+    });
+
+    resultSection.innerHTML = "";
+
+    var highScoresTitle = document.createElement("h2");
+    highScoresTitle.textContent = "High Scores";
+    resultSection.append(highScoresTitle);
+
+    var highScoresList = document.createElement("ol");
+    resultSection.append(highScoresList);
+
     for (i = 0; i < scoresArr.length; i++) {
       var parsed = scoresArr[i];
       console.log(parsed);
-    }
 
-    for (i = 0; i < scoresArr.length; i++) {
       var listItem = document.createElement("li");
       listItem.textContent = `${parsed.initialsInput}: ${parsed.timeScore}`;
+      highScoresList.append(listItem);
       console.log(listItem);
     }
   }
