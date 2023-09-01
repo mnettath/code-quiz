@@ -172,7 +172,7 @@ startButton.addEventListener("click", startQuiz);
 // this function is listening for the submit button to be clicked and then it puts the user information into local storage
 
 submitButton.addEventListener("click", function (event) {
-  // event.preventDefault();
+  event.preventDefault();
 
   if (initials !== "") {
     var scoresArr = JSON.parse(localStorage.getItem("inputData")) || [];
