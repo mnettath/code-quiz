@@ -8,12 +8,12 @@ html {
   display: none;
 }
 
-li {
+#quiz li {
   cursor: grab;
   margin: 20px;
 }
 
-li:hover {
+#quiz li:hover {
   background-color: rgb(177, 243, 177);
   width: 15vh;
 }
@@ -21,4 +21,20 @@ li:hover {
 #timerDisplay {
   color: darkmagenta;
   font-weight: bolder;
+}
+
+#result li {
+  margin: 20px;
+}
+
+button {
+  background-color: rgb(231, 231, 174);
+  border-radius: 20px;
+  width: 20vh;
+  height: 5vh;
+  font-size: 3vh;
+}
+
+label {
+  margin-right: 10px;
 }
